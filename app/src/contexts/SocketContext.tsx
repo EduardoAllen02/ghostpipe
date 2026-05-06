@@ -1,7 +1,9 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { io, type Socket } from 'socket.io-client'
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL ?? 'http://localhost:3001'
+// Empty string = same origin (works in production + via Vite proxy in dev)
+// Set VITE_SERVER_URL when building the APK
+const SERVER_URL = import.meta.env.VITE_SERVER_URL ?? ''
 const ROOM_KEY = 'ghostpipe_room_id'
 
 function getOrCreateRoomId(): string {
